@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Card, Container } from "semantic-ui-react";
+import { Header, Card, Container, Button } from "semantic-ui-react";
 import {getCategories} from "../reducers/categories";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
@@ -39,6 +39,9 @@ class App extends Component {
         <Card.Group itemsPerRow={3}>
           { this.categories()}
         </Card.Group>
+        <br/>
+        <br/>
+        <Button> Add a Category </Button>
         
       </Container>
     )

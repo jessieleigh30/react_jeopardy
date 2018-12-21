@@ -11,7 +11,12 @@ export const getCategories = () => {
   }
 }
 
-
+export const addCategory = (category) => {
+  return (dispatch) => {
+    axios.post(`api/categories`, {category} )
+    .then( res => dispatch({ type: 'ADD_CATEGORY, category: res.data'}))
+  }
+}
 
 
 export default ( state = [], action ) => {
