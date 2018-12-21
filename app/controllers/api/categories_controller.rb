@@ -1,6 +1,6 @@
 class Api::CategoriesController < ApplicationController
   
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :destroy]
 
   def index
     render json: Category.all
@@ -20,9 +20,15 @@ class Api::CategoriesController < ApplicationController
   end
 
   def update
+    if @category.update(category_params)
+      render json: @category
+    else
+      render json: @category.errors, status: 422
+    end
   end
 
-  def destory
+  def destroy
+    @category.destroy
   end
 
   private

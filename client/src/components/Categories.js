@@ -22,14 +22,15 @@ class App extends Component {
             Pick this Category
             </Link>
           </Card.Content>
+          <Card.Content extra>
+          </Card.Content>
         </Card>
-     
       </div>
     )
-
   }//end of categories
 
   render() {
+    
     return (
       <Container>
      
