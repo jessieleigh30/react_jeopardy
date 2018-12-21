@@ -4,10 +4,10 @@ import axios from "axios";
 
 //Redux actions
 
-export const getCategories = () => {
+export const getCard = () => {
   return (dispatch) => {
-    axios.get('/api/categories')
-      .then( res => dispatch({ type: 'CATEGORIES', categories: res.data }) )
+    axios.get('/api/cards')
+      .then( res => dispatch({ type: 'CARDS', card: res.data }) )
   }
 }
 
@@ -16,12 +16,11 @@ export const getCategories = () => {
 
 export default ( state = [], action ) => {
   switch(action.type) {
-    case 'CATEGORIES':
-      return action.categories
-    case 'ADD_CATEGORY':
+    case 'CARDS':
+      return action.cards
+    case 'ADD_CARD':
       return [action.category, ...state];
     default:
       return state
   }
 }
-
