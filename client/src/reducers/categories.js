@@ -18,6 +18,14 @@ export const addCategory = (category) => {
   }
 }
 
+export const updateCategory = (category) => {
+  return (dispatch) => {
+    axios.put(`api/categories/${category.id}`, {category} )
+    .then( res => dispatch ({ type: "UPDATE_CATEGORY", category: res.data}))
+  }
+}
+
+
 
 export default ( state = [], action ) => {
   switch(action.type) {
