@@ -47,7 +47,7 @@ class App extends Component {
     const { showForm } = this.state;
     return (
       <Container>
-         <Header as="h1" textAlign="center"> Welcome to Jeopardy!</Header>
+         <Header as="h1" textAlign="center" color="blue"> Welcome to Jeopardy!</Header>
         <Header as="h3" textAlign="center">Pick a Category:</Header>
         <Button onClick={this.toggleForm}>
         {showForm ? 'Cancel' : 'Add Category'}

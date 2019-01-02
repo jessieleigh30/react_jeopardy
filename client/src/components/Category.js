@@ -1,6 +1,6 @@
 import React from "react";
 import {getCards} from "../reducers/cards";
-import { Container, Header, Card   } from 'semantic-ui-react';
+import { Container, Header, Card, Button   } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import categories from "../reducers/categories";
@@ -35,6 +35,9 @@ class Category extends React.Component {
       return (
         <Container>
           <Header as="h1" textAlign="center"> {this.state.category.name}  </Header>
+          <Button> Add Question </Button>
+          <br/>
+          <br/>
           <Card.Group itemsPerRow={3}>
             {this.cards()}
           </Card.Group>
