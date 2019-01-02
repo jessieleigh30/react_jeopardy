@@ -20,13 +20,13 @@ class Category extends React.Component {
 
     cards = () => {
       return this.props.cards.map( card =>
-        <div>
+        
           <Card key={ card.id }>  
             <Card.Content>
               {card.answer}
             </Card.Content>
           </Card>
-        </div>
+      
       )
     }//end of categories
     

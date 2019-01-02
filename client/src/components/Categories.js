@@ -3,14 +3,13 @@ import { Header, Card, Container, Button } from "semantic-ui-react";
 import { getCategories } from "../reducers/categories";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import  CategoryForm  from "./CategoryForm";
+import CategoryForm from "./CategoryForm";
 
 class App extends Component {
-  state = { showForm: false};
+  state = { showForm: false };
 
   toggleForm = () => {
-    debugger
-    this.setState( { showForm: !this.state.showForm, })
+    this.setState({ showForm: !this.state.showForm, })
   }
 
 
@@ -18,43 +17,53 @@ class App extends Component {
     this.props.dispatch(getCategories())
   };
 
+
+ //individual card
   categories = () => {
     return this.props.categories.map(category =>
-      <div>
+      
         <Card key={category.id}>
           <Card.Content>
+          <Card.Header>
             <h1> {category.name} </h1>
-
-          </Card.Content>
-          <Card.Content extra>
-            <Link to={`/categories/${category.id}`}>
+          </Card.Header>
+          < br/>
+          <Link to={`/categories/${category.id}`}>
+            <Card.Content extra>
               Pick this Category
-            </Link>
-          </Card.Content>
+           </Card.Content>
+           < br/>
+          </Link>
           <Card.Content extra>
             <Button color="red" size="small">Delete</Button>
           </Card.Content>
+          </Card.Content>
         </Card>
-      </div>
+      
     )
   }//end of categories
 
   render() {
-    const { showForm } = this.state
+    const { showForm } = this.state;
     return (
       <Container>
-
-        <Header as="h1" textAlign="center"> Welcome to Jeopardy!</Header>
+         <Header as="h1" textAlign="center"> Welcome to Jeopardy!</Header>
         <Header as="h3" textAlign="center">Pick a Category:</Header>
-        <Card.Group itemsPerRow={3}>
-          {this.categories()}
-        </Card.Group>
+        <Button onClick={this.toggleForm}>
+        {showForm ? 'Cancel' : 'Add Category'}
+        </Button>
+        <br/>
+        <br/>
         <br />
         <br />
-        <Button onClick={this.toggleForm}> Add a Category  {showForm ? 'Hide Form' : 'Show Form' } </Button>
-       
-        
-        <CategoryForm />
+        {
+          showForm ? 
+          <CategoryForm closeForm={this.toggleForm}/>
+          :
+          <Card.Group itemsPerRow={3}>
+            {this.categories()}
+          </Card.Group>
+        }
 
 
       </Container>

@@ -4,7 +4,9 @@ import { Form, Container } from "semantic-ui-react";
 import { addCategory, updateApp } from "../reducers/categories";
 
 class CategoryForm extends React.Component {
-  State = {name: ""};
+  initialState = {name: ""};
+
+  state = {...this.initialState};
 
   componentDidMount () {
     if (this.props.id)
